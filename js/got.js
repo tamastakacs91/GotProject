@@ -8,6 +8,7 @@ const gotData = {
 
   elements: {
     characterDivs: document.querySelector('.character-div'),
+    sidebar: document.querySelector('.sidebar-div'),
   },
 
 
@@ -33,6 +34,7 @@ const gotData = {
   getAliveCharacters() {
     for (let i = 0; i < this.data.length; i += 1) {
       if (this.data[i].dead !== true) {
+        this.data[i].id = i + 1;
         this.aliveCharacters.push(this.data[i]);
       }
     }
@@ -64,10 +66,10 @@ const gotData = {
 
   createCharacterDivs(character) {
     return `
-    <div class="character-div--unit">
+    <div class="character-div--unit" data-id=${character.id} onclick="gotData.showTheNameOfClickedCharacter(${character.id})">
       <div class="character-div--portrait">
-        <img src=${character.portrait} alt=${character.name}>
-     </div>
+        <img src="${character.portrait}" alt="${character.name}">
+      </div>
       <div class="character-div--name">
         <p>${character.name}</p>
       </div>
@@ -75,10 +77,39 @@ const gotData = {
     `;
   },
 
+  showTheNameOfClickedCharacter(id) {
+    const unit = document.querySelector(`.character-div--unit[data-id ="${id}"]`);
+    const para = unit.querySelector('.character-div--name');
+    const text = para.querySelector('p').textContent;
+    console.log(text);
+    let sidebarContent = '';
+
+    for (let i = 0; i < this.aliveCharacters.length; i += 1) {
+      if (text === this.aliveCharacters[i].name) {
+        sidebarContent += `
+        <div>
+        <h2>Game of Thrones</h2>
+        </div>
+        <div>
+        <img src="${this.aliveCharacters[i].picture}" alt="${this.aliveCharacters[i].name}">
+        </div>
+        <div>
+        <p>
+        ${this.aliveCharacters[i].bio}
+        </p>
+        </div>
+        `;
+      }
+    }
+    this.elements.sidebar.innerHTML = sidebarContent;
+  },
+
+  // showCharacterDetails() {
+  //   const clickedCharacter = this.showTheNameOfClickedCharacter();
+  //   console.log(clickedCharacter);
+  // },
 
 };
 
-gotData.init();
 
-// Live servert használd mindig!!!!!
-/* IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ! */
+gotData.init();
