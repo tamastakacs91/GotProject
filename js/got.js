@@ -1,8 +1,14 @@
 const gotData = {
+  data: [],
+
   init() {
-    this.data = [];
     this.findAll();
   },
+
+  elements: {
+    characterDivs: document.querySelector('.character-div'),
+  },
+
 
   findAll() {
     const request = new XMLHttpRequest();
@@ -18,10 +24,37 @@ const gotData = {
 
   setData(userData) {
     this.data = JSON.parse(userData);
+    this.showAliveCharacters();
+  },
+
+  showAliveCharacters() {
+    let characterDiv = '';
+    let aliveCharacters = 0;
+    for (let i = 0; i < this.data.length; i += 1) {
+      if (this.data[i].dead !== true) {
+        aliveCharacters += 1;
+        characterDiv += this.createCharacterDivs(this.data[i]);
+      }
+    }
+    console.log(aliveCharacters);
+    this.elements.characterDivs.innerHTML += characterDiv;
+  },
+
+  createCharacterDivs(character) {
+    return `
+    <div>
+      <div>
+        <img src=${character.portrait} alt=${character.name}>
+     </div>
+      <div>
+        <p>${character.name}</p>
+      </div>
+    </div>
+    `;
   },
 
 
-}
+};
 
 gotData.init();
 
