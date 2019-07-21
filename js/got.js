@@ -9,6 +9,8 @@ const gotData = {
   elements: {
     characterDivs: document.querySelector('.character-div'),
     sidebar: document.querySelector('.sidebar-div--click-area'),
+    searchInput: document.querySelector('#search-input'),
+    searchArrow: document.querySelector('.search-button--arrow'),
   },
 
 
@@ -108,6 +110,11 @@ const gotData = {
   //   const clickedCharacter = this.showTheNameOfClickedCharacter();
   //   console.log(clickedCharacter);
   // },
+
+  searchForACharacter() {
+    const search = this.elements.searchInput.value;
+    console.log(search);
+  },
 
 };
 
