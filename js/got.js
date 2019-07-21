@@ -8,7 +8,7 @@ const gotData = {
 
   elements: {
     characterDivs: document.querySelector('.character-div'),
-    sidebar: document.querySelector('.sidebar-div'),
+    sidebar: document.querySelector('.sidebar-div--click-area'),
   },
 
 

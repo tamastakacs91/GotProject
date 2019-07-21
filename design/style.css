@@ -1,7 +1,6 @@
 body {
+    box-sizing: border-box;
     margin: 0px;
-    height: 100%;
-    width: 100%;
 }
 
 .flex-container {
@@ -14,10 +13,13 @@ body {
 }
 
 .sidebar-div {
+    text-align: center;
+    background-color: #786262;
     width: 30%;
 }
 
 .character-div--container {
+    background: url(../assets/site/mapblue.jpg);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -30,4 +32,50 @@ body {
 
 .character-div--unit p {
     font-weight: bold;
+}
+
+.sidebar-div--search-input {
+    bottom: 20%;
+    position: fixed;
+    width: 30%;
+}
+
+.sidebar-div--click-area {
+    top: 0;
+    position: fixed;
+}
+
+#search-input {
+    height: 30px;
+    width: 50%;
+}
+
+.search-button--arrow {
+    height: 30px;
+    left: 0px;
+    position: relative;
+    top: 11px;
+}
+
+@media screen and (max-width: 700px) {
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .character-div {
+        width: 100%;
+    }
+
+    .sidebar-div {
+        text-align: center;
+        background-color: #786262;
+        width: 100%;
+    }
+
+    .character-div--unit {
+        text-align: center;
+        width: 50%;
+    }
+
 }
