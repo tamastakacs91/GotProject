@@ -96,6 +96,7 @@ const gotData = {
         <img src="${this.aliveCharacters[i].picture}" alt="${this.aliveCharacters[i].name}">
         </div>
         <div>
+        <h3>${this.aliveCharacters[i].name}</h3>
         <p>
         ${this.aliveCharacters[i].bio}
         </p>
@@ -113,7 +114,25 @@ const gotData = {
 
   searchForACharacter() {
     const search = this.elements.searchInput.value;
-    console.log(search);
+    let sidebarContent = '';
+    for (let i = 0; i < this.aliveCharacters.length; i += 1) {
+      if (search.toUpperCase() === this.aliveCharacters[i].name.toUpperCase()) {
+        sidebarContent += `
+        <div>
+        <h2>Game of Thrones</h2>
+        </div>
+        <div>
+        <img src="${this.aliveCharacters[i].picture}" alt="${this.aliveCharacters[i].name}">
+        </div>
+        <div>
+        <p>
+        ${this.aliveCharacters[i].bio}
+        </p>
+        </div>
+        `;
+      }
+    }
+    this.elements.sidebar.innerHTML = sidebarContent;
   },
 
 };

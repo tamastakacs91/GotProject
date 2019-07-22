@@ -1,3 +1,8 @@
+@font-face {
+    font-family: gotFont;
+    src: url(/font/Game\ of\ Thrones.ttf);
+}
+
 body {
     box-sizing: border-box;
     margin: 0px;
@@ -30,8 +35,12 @@ body {
     width: calc(100%/8);
 }
 
-.character-div--unit p {
+.character-div--unit:hover {
     font-weight: bold;
+}
+
+.sidebar-div img {
+    width: 60vh;
 }
 
 .sidebar-div--search-input {
@@ -57,25 +66,11 @@ body {
     top: 11px;
 }
 
-@media screen and (max-width: 700px) {
-    .flex-container {
-        display: flex;
-        flex-direction: column;
-    }
+.character-div--portrait img {
+    filter: grayscale(100%);
 
-    .character-div {
-        width: 100%;
-    }
+}
 
-    .sidebar-div {
-        text-align: center;
-        background-color: #786262;
-        width: 100%;
-    }
-
-    .character-div--unit {
-        text-align: center;
-        width: 50%;
-    }
-
+.character-div--portrait img:hover {
+    filter: grayscale(0%)
 }
